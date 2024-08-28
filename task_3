@@ -1,0 +1,19 @@
+<?php
+
+class Book {
+    public $title;
+    public $author;
+    public $year;
+    public $price;
+    
+    public function __construct($title, $author, $year, $price) {
+        $this->title = $title;
+        $this->author = $author;
+        $this->year = $year;
+        $this->price = $price;
+    }
+}
+
+$book1 = new Book("Ромео&Джульетта","Shakespeare","1591","500");
+$book2 = new Book("Том Сойер","Марк Твен","1876","700");
+?>
