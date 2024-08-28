@@ -12,8 +12,20 @@ class Book {
         $this->year = $year;
         $this->price = $price;
     }
+
+     function getInfo(){
+        return "Название: {$this->title}, Автор: {$this->author}, Год: {$this->year}, Цена: {$this->price}\n";
+    }
 }
 
-$book1 = new Book("Ромео&Джульетта","Shakespeare","1591","500");
-$book2 = new Book("Том Сойер","Марк Твен","1876","700");
+$books= [
+new Book("Ромео&Джульетта","Shakespeare","1591","500"),
+new Book("Грокаем алгоритмы","Бхаргава Адитья","2022","563"),
+new Book("Том Сойер","Марк Твен","1876","700"),
+new Book("Совершенный код","Макконнелл Стив","2022","1653")
+];
+
+foreach ($books as $book){
+    echo $book->getInfo();
+}
 ?>
