@@ -1,0 +1,42 @@
+<?php
+
+$shoppingCart = [
+    ['product' => 'Телефон', 'price' => 1200],
+    ['product' => 'Наушники', 'price' => 800],
+    ['product' => 'Ноутбук', 'price' => 1500],
+    ['product' => 'Телевизор', 'price' => 1000],
+    ['product' => 'Кабель', 'price' => 50],
+    ['product' => 'Клавиатура', 'price' => 400]
+];
+
+function calculateTotal($cart) {
+    $total = 0;
+    $discount1000= false;
+    $discount3= false;
+    
+    foreach ($cart as $item) {
+        if ($item['price'] > 1000) {
+            $discount1000 = true;
+            break;
+        }
+    }
+    
+    if (count($cart) > 3) {
+        $discount3 = true;
+    }
+    
+     foreach ($cart as $item) {
+        $price = $item['price']; // Получение цены товара по ключу 'price'
+        if ($discount1000) {
+            $price *= 0.9; // Применение скидки 10%
+        } if ($discount3) {
+            $price *= 0.95; // Применение скидки 5%
+        }
+        $total += $price; // Добавление цены товара к общей стоимости
+    }
+    
+    return $total;
+}
+$totalPrice = calculateTotal($shoppingCart);
+echo "Общая стоимость товаров в корзине: $totalPrice";
+?>
