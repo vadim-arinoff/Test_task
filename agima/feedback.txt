@@ -1,0 +1,6 @@
+{"username":"deloy","email":"vadimershov@list.ru","rating":"2","comment":"asdasd","timestamp":"2025-02-05 14:08:56"}
+{"username":"deloy","email":"vadimershov@list.ru","rating":"2","comment":"asdasd","timestamp":"2025-02-05 14:10:38"}
+{"username":"jaja","email":"Carralfull@gmail.com","rating":"0","comment":"124124","timestamp":"2025-02-05 14:10:45"}
+{"username":"deloy","email":"asdsad@aasdas.asf","rating":"3","comment":"51","timestamp":"2025-02-05 14:11:16"}
+{"Имя":"deloy","Почта":"asdsad@aasdas.asf","Оценка":"3","Комментарий":"51","Дата":"2025-02-05 14:12:14"}
+{"Имя":"jaja","Почта":"oleg.orlov.76@mail.inbox","Оценка":"2","Комментарий":"1452","Дата":"2025-02-05 14:15:57"}
