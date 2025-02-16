@@ -1,10 +1,10 @@
 <?php
 
 class Book {
-    public $title;
-    public $author;
-    public $year;
-    public $price;
+    private $title;
+    private $author;
+    private $year;
+    private $price;
     
     public function __construct($title, $author, $year, $price) {
         if (empty($title) || empty($author) || empty($year) || empty($price)) {
