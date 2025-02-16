@@ -3,6 +3,10 @@
         require_once 'header.php';
         require 'form.php';
         require_once 'footer.php';
+
+        error_reporting(E_ALL);
+        ini_set('display_errors', 'on');
+        mb_internal_encoding('UTF-8');
     ?>
    <h2 id="form-title">Форма обратной связи</h2>
     <form action="form.php" method="post">
