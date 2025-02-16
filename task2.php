@@ -17,27 +17,36 @@ function CalculateTotal($shoppingCart){
     }
 
     $total = 0;
-    $discount1 = false; //товар со стоимостью более 1000 рублей
-    $cartCount = count($shoppingCart);
+    $hasExpensiveItem = false; //товар со стоимостью более 1000 рублей
+    $itemCount = count($shoppingCart);
 
-    foreach ($shoppingCart as $key => $value) {
-        if(!is_array($value) || !is_numeric($value['price']) || !isset($value['price']) || $value['price'] < 0){
-            echo 'Корзина не должна быть пустой или она не массив';
-        return;
-        }
-       $total += $value['price'];
-       if ($value['price']>1000){
-        $discount1 = true;
+    foreach ($shoppingCart as $item) {
+        if (!is_array($item) || !isset($item['product']) || !isset($item['price']) || !is_numeric($item['price']) || $item['price'] < 0){
+        echo 'Корзина не должна быть пустой или она не массив';
+        return false;
+    } 
+
+       $total += $item['price'];
+       if ($item['price']>1000){
+        $hasExpensiveItem = true;
        }
     }
-        if ($discount1 == true){
-            $total *= 0.9;
-        }
-        if ($cartCount > 3){
-            $total *= 0.95;
-        }
+        
+    $discount = 0;
+    if($hasExpensiveItem){
+        $discount += 0.1;
+    }
+    if($itemCount >=4){
+        $discount += 0.05;
+    }
     
-    return $total;
+    return $total * (1 - $discount);
 }
 
-echo CalculateTotal($shoppingCart);
+$calculatedTotal = calculateTotal($shoppingCart);
+
+if ($calculatedTotal === false) {
+    echo "Ошибка: некорректный формат корзины.";
+} else {
+    echo "Общая стоимость с учетом скидки: " . $calculatedTotal;
+}
