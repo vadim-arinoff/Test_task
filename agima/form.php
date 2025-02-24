@@ -2,8 +2,12 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = htmlspecialchars($_POST['username']);
         $email = htmlspecialchars(trim($_POST['email']));
+
+        $response = array();
+
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            echo "<script>alert('Неверный формат электронной почты');</script>";
+            $response ['status'] = 'error';
+            $response ['message'] = 'Неверный формат почты';
     } else {
         $rating = htmlspecialchars($_POST['rating']);
         $comment = htmlspecialchars($_POST['comment']);
@@ -21,12 +25,16 @@
         $dataString = json_encode($feedback, JSON_UNESCAPED_UNICODE) . PHP_EOL;
         fwrite($file, $dataString);
         fclose($file);
-        echo "<script>alert('Спасибо за ваш отзыв!'); window.location.href = 'index.php';</script>";
+        $response ['status'] = 'success';
+        $response ['message'] = 'Спасибо за ваш отзыв!';
     } else {
-        echo "<script>alert('Ошибка при открытии файла для записи.'); window.location.href = 'index.php';</script>";
+        $response ['status'] = 'error';
+        $response ['message'] = 'Ошибка при открытии файла для записи';
     }
        
     }
+    header('Content-Type: application/json');
+    echo json_encode($response);
     exit();
     }
 
